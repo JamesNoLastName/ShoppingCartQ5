@@ -31,14 +31,12 @@ class MainActivity : ComponentActivity() {
         setContent {
             ShoppingCartQ5Theme {
                 val snackbarHostState = remember { SnackbarHostState() }
-
                 Scaffold(
                     modifier = Modifier
                         .fillMaxSize()
                         .background(Color.White),
-                    snackbarHost = { SnackbarHost(hostState = snackbarHostState) } // Corrected snackbarHost parameter
-                ) { innerPadding ->
-                    ShoppingCart(
+                    snackbarHost = { SnackbarHost(hostState = snackbarHostState) }
+                ) { innerPadding -> ShoppingCart(
                         modifier = Modifier
                             .padding(innerPadding),
                         snackbarHostState = snackbarHostState
@@ -51,7 +49,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun ShoppingCart(modifier: Modifier = Modifier, snackbarHostState: SnackbarHostState) {
-    val snackbarMessage = "Ordered" // Always show "Ordered" on click
+    val snackbarMessage = "Ordered"
     val imageSize = modifier.size(100.dp)
     var buttonClicked by remember { mutableStateOf(false) }
     LaunchedEffect(buttonClicked) {
@@ -62,7 +60,7 @@ fun ShoppingCart(modifier: Modifier = Modifier, snackbarHostState: SnackbarHostS
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
-            .padding(24.dp)
+            .padding(22.dp)
     ) {
         Text(
             text = "Your Cart",
@@ -100,8 +98,6 @@ fun ShoppingCart(modifier: Modifier = Modifier, snackbarHostState: SnackbarHostS
                     contentDescription = null,
                     modifier = imageSize
                 )
-                HorizontalDivider(thickness = 1.dp)
-
             }
 
             HorizontalDivider(thickness = 1.dp)
@@ -111,7 +107,7 @@ fun ShoppingCart(modifier: Modifier = Modifier, snackbarHostState: SnackbarHostS
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier
-                    .padding(24.dp)
+                    .padding(22.dp)
                     .fillMaxWidth()
             ) {
                 Column {
@@ -134,7 +130,7 @@ fun ShoppingCart(modifier: Modifier = Modifier, snackbarHostState: SnackbarHostS
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier
-                    .padding(24.dp)
+                    .padding(22.dp)
                     .fillMaxWidth()
             ) {
                 Column {
@@ -171,7 +167,7 @@ fun ShoppingCart(modifier: Modifier = Modifier, snackbarHostState: SnackbarHostS
         Row(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
-                .padding(24.dp)
+                .padding(22.dp)
                 .fillMaxWidth()
         ) {
             Column(
@@ -194,6 +190,7 @@ fun ShoppingCart(modifier: Modifier = Modifier, snackbarHostState: SnackbarHostS
     @Preview(showBackground = true)
     @Composable
     fun ShoppingCartPreview() {
+
         val snackbarHostState = remember { SnackbarHostState() }
         ShoppingCartQ5Theme {
             ShoppingCart(snackbarHostState = snackbarHostState)
